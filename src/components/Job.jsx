@@ -59,8 +59,17 @@ const Job = ({ job, isSavedPage = false }) => {
         setShowApplicationForm(true);
     };
 
-    return (
-        <div className="p-5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-all duration-200">
+        return (
+                <>
+                {/* Responsive container for mobile */}
+                <style>{`
+                    @media (max-width: 640px) {
+                        .job-main-card { padding: 1rem !important; font-size: 1rem !important; }
+                        .job-main-title { font-size: 1.1rem !important; }
+                        .job-main-btn { width: 100% !important; padding: 0.75rem !important; font-size: 1rem !important; }
+                    }
+                `}</style>
+                <div className="job-main-card p-5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-all duration-200">
             <div className="flex items-center justify-between">
                 <p className="text-sm text-slate-500 dark:text-slate-400">
                     {daysAgoFunction(job?.createdAt) === 0 ? "Today" : `${daysAgoFunction(job?.createdAt)} days ago`}
@@ -82,13 +91,13 @@ const Job = ({ job, isSavedPage = false }) => {
                     </Avatar>
                 </Button>
                 <div>
-                    <h1 className='font-medium text-lg text-gray-900 dark:text-white'>{job?.company?.name}</h1>
+                    <h1 className='job-main-title font-medium text-lg text-gray-900 dark:text-white'>{job?.company?.name}</h1>
                     <p className='text-sm text-gray-500 dark:text-gray-400'>India</p>
                 </div>
             </div>
 
             <div>
-                <h1 className='font-bold text-lg my-2 text-gray-900 dark:text-white'>{job?.title}</h1>
+                <h1 className='job-main-title font-bold text-lg my-2 text-gray-900 dark:text-white'>{job?.title}</h1>
                 <p className='text-sm text-gray-600 dark:text-gray-300'>{job?.description}</p>
             </div>
             <div className='flex flex-wrap items-center gap-2 mt-4'>
@@ -102,11 +111,11 @@ const Job = ({ job, isSavedPage = false }) => {
                     {job?.salary} LPA
                 </Badge>
             </div>
-            <div className='flex items-center gap-4 mt-4'>
+            <div className='flex items-center gap-4 mt-4 flex-col md:flex-row'>
                 <Button 
                     onClick={() => navigate(`/description/${job?._id}`)} 
                     variant="outline"
-                    className="dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-700"
+                    className="job-main-btn dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-700"
                 >
                     View Details
                 </Button>
@@ -114,14 +123,14 @@ const Job = ({ job, isSavedPage = false }) => {
                     <Button 
                         onClick={handleSaveJob}
                         disabled={saving}
-                        className="bg-purple-600 hover:bg-purple-700 text-white dark:bg-purple-700 dark:hover:bg-purple-800"
+                        className="job-main-btn bg-purple-600 hover:bg-purple-700 text-white dark:bg-purple-700 dark:hover:bg-purple-800"
                     >
                         {saving ? 'Saving...' : 'Save Job'}
                     </Button>
                 )}
                 <Button 
                     onClick={handleApply}
-                    className="bg-green-600 hover:bg-green-700 text-white dark:bg-green-700 dark:hover:bg-green-800"
+                    className="job-main-btn bg-green-600 hover:bg-green-700 text-white dark:bg-green-700 dark:hover:bg-green-800"
                 >
                     Apply
                 </Button>
@@ -134,6 +143,7 @@ const Job = ({ job, isSavedPage = false }) => {
                 />
             )}
         </div>
+        </>
     );
 };
 

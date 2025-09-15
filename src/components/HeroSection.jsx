@@ -75,6 +75,16 @@ const HeroSection = () => {
     return (
         <div className='min-h-[85vh] flex items-center justify-center bg-gradient-to-b from-purple-50 to-white dark:from-gray-900 dark:to-gray-800 transition-all duration-300'>
             <div className='max-w-7xl mx-auto px-4 text-center'>
+                {/* Responsive container for mobile */}
+                <style>{`
+                  @media (max-width: 640px) {
+                    .hero-heading { font-size: 2rem !important; }
+                    .hero-subtitle { font-size: 1rem !important; }
+                    .hero-search { flex-direction: column !important; gap: 0.5rem !important; }
+                    .hero-search input, .hero-search button { width: 100% !important; font-size: 1rem !important; padding: 0.75rem !important; }
+                    .hero-features { grid-template-columns: 1fr !important; gap: 1rem !important; }
+                  }
+                `}</style>
                 <motion.div 
                     className='flex flex-col gap-8 items-center'
                     initial={{ opacity: 0, y: 20 }}
@@ -91,8 +101,8 @@ const HeroSection = () => {
                     </motion.span>
 
                     {/* Main Heading */}
-                    <motion.h1 
-                        className='text-5xl md:text-6xl font-bold leading-tight'
+          <motion.h1 
+            className='hero-heading text-5xl md:text-6xl font-bold leading-tight'
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
@@ -104,8 +114,8 @@ const HeroSection = () => {
                     </motion.h1>
 
                     {/* Subtitle */}
-                    <motion.p 
-                        className='text-lg text-gray-600 dark:text-gray-300 max-w-2xl'
+          <motion.p 
+            className='hero-subtitle text-lg text-gray-600 dark:text-gray-300 max-w-2xl'
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.4 }}
@@ -114,8 +124,8 @@ const HeroSection = () => {
                     </motion.p>
 
                     {/* Search Bar */}
-                    <motion.div 
-                        className='w-full max-w-2xl mx-auto mt-8'
+          <motion.div 
+            className='hero-search w-full max-w-2xl mx-auto mt-8 flex flex-row gap-2'
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.6 }}
@@ -193,8 +203,8 @@ const HeroSection = () => {
                     </motion.div>
 
                     {/* Features Grid */}
-                    <motion.div 
-                        className='grid grid-cols-2 md:grid-cols-4 gap-6 mt-12'
+          <motion.div 
+            className='hero-features grid grid-cols-2 md:grid-cols-4 gap-6 mt-12'
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.8 }}

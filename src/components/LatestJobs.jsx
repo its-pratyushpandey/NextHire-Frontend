@@ -54,8 +54,17 @@ const LatestJobs = () => {
         return levels[level] || <Users className="h-4 w-4" />;
     };
 
-    return (
-        <section className="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
+        return (
+                <section className="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
+                        {/* Responsive container for mobile */}
+                        <style>{`
+                            @media (max-width: 640px) {
+                                .latest-jobs-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
+                                .latest-jobs-card { padding: 1rem !important; }
+                                .latest-jobs-title { font-size: 1.5rem !important; }
+                                .latest-jobs-btn { width: 100% !important; padding: 1rem !important; font-size: 1rem !important; }
+                            }
+                        `}</style>
             {/* Background Elements */}
             <div className="absolute inset-0 overflow-hidden">
                 <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500/10 dark:bg-purple-500/20 rounded-full blur-3xl" />
@@ -92,7 +101,7 @@ const LatestJobs = () => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    className="latest-jobs-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                 >
                     {allJobs?.slice(0, 6)?.map((job) => (
                         <motion.div
@@ -100,7 +109,7 @@ const LatestJobs = () => {
                             variants={itemVariants}
                             onHoverStart={() => setHoveredId(job._id)}
                             onHoverEnd={() => setHoveredId(null)}
-                            className="group relative bg-white dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700"
+                            className="latest-jobs-card group relative bg-white dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700"
                         >
                             {/* Gradient Overlay */}
                             <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 via-transparent to-pink-600/5 dark:from-purple-600/10 dark:to-pink-600/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -130,7 +139,7 @@ const LatestJobs = () => {
 
                                 {/* Job Details */}
                                 <div className="space-y-4">
-                                    <h4 className="text-xl font-bold text-gray-900 dark:text-white">
+                                    <h4 className="latest-jobs-title text-xl font-bold text-gray-900 dark:text-white">
                                         {job?.title}
                                     </h4>
                                     <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">
@@ -179,7 +188,7 @@ const LatestJobs = () => {
                                 >
                                     <Button
                                         onClick={() => navigate(`/description/${job._id}`)}
-                                        className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-medium py-6"
+                                        className="latest-jobs-btn w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-medium py-6"
                                     >
                                         <span>View Details</span>
                                         <ArrowRight className="h-4 w-4 ml-2" />
@@ -200,7 +209,7 @@ const LatestJobs = () => {
                     <Button
                         onClick={() => navigate('/jobs')}
                         variant="outline"
-                        className="group px-8 py-6 rounded-full border-2 border-purple-600 dark:border-purple-400 text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20"
+                        className="latest-jobs-btn group px-8 py-6 rounded-full border-2 border-purple-600 dark:border-purple-400 text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20"
                     >
                         <span>View All Opportunities</span>
                         <motion.span

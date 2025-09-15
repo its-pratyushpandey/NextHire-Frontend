@@ -126,8 +126,16 @@ const Browse = () => {
         "Full Stack Developer"
     ];
 
-    return (
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-all duration-300">
+        return (
+                <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-all duration-300">
+                        {/* Responsive container for mobile */}
+                        <style>{`
+                            @media (max-width: 640px) {
+                                .browse-controls { flex-direction: column !important; gap: 1rem !important; }
+                                .browse-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
+                                .browse-card { padding: 1rem !important; }
+                            }
+                        `}</style>
             <Navbar />
 
             {/* Hero Section */}
@@ -168,7 +176,7 @@ const Browse = () => {
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="mb-8 space-y-4"
+                    className="browse-controls mb-8 space-y-4 flex flex-row gap-4"
                 >
                     <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
                         {/* View Toggle */}
@@ -371,13 +379,13 @@ const Browse = () => {
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    className={`grid grid-cols-1 ${viewMode === 'grid' ? 'md:grid-cols-2 lg:grid-cols-3' : ''} gap-6`}
+                    className={`browse-grid grid grid-cols-1 ${viewMode === 'grid' ? 'md:grid-cols-2 lg:grid-cols-3' : ''} gap-6`}
                 >
                     {filteredJobs.map((job) => (
                         <motion.div
                             key={job._id}
                             variants={itemVariants}
-                            className="h-full"
+                            className="browse-card h-full"
                         >
                             <Job job={job} viewMode={viewMode} />
                         </motion.div>

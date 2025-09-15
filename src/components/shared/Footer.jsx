@@ -145,10 +145,17 @@ const Footer = () => {
         </div>
     );
 
-    return (
-        <footer className="relative bg-white dark:bg-gray-900 pt-16 pb-8">
-            <div className="max-w-7xl mx-auto px-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        return (
+                <footer className="relative bg-white dark:bg-gray-900 pt-16 pb-8">
+                        {/* Responsive container for mobile */}
+                        <style>{`
+                            @media (max-width: 640px) {
+                                .footer-grid { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
+                                .footer-bottom { flex-direction: column !important; gap: 1rem !important; }
+                            }
+                        `}</style>
+                        <div className="max-w-7xl mx-auto px-4">
+                                <div className="footer-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                     {/* Brand & Newsletter */}
                     <div className="lg:col-span-1">
                         <Link to="/" className="inline-block group">
@@ -190,7 +197,7 @@ const Footer = () => {
 
                 {/* Footer Bottom */}
                 <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div className="footer-bottom flex flex-col md:flex-row justify-between items-center gap-4">
                         <p className="text-sm text-gray-600 dark:text-gray-400 font-semibold">
                             © {currentYear} NextHire by Pratyush Pandey              All rights reserved.
                         </p>

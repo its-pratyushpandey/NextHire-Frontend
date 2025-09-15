@@ -6,9 +6,17 @@ const JobCard = ({ job }) => {
 
   return (
     <>
-      <div className="bg-white dark:bg-gray-900 shadow-md rounded-2xl p-6 hover:shadow-xl transition duration-300 border border-purple-200 dark:border-purple-700">
+      {/* Responsive container for mobile */}
+      <style>{`
+        @media (max-width: 640px) {
+          .job-card { padding: 1rem !important; font-size: 1rem !important; }
+          .job-card-title { font-size: 1.1rem !important; }
+          .job-card-btn { width: 100% !important; padding: 0.75rem !important; font-size: 1rem !important; }
+        }
+      `}</style>
+      <div className="job-card bg-white dark:bg-gray-900 shadow-md rounded-2xl p-6 hover:shadow-xl transition duration-300 border border-purple-200 dark:border-purple-700">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-purple-700 dark:text-purple-400">
+          <h3 className="job-card-title text-lg font-semibold text-purple-700 dark:text-purple-400">
             {job.title}
           </h3>
           <span className="text-sm text-gray-500 dark:text-gray-300">
@@ -26,7 +34,7 @@ const JobCard = ({ job }) => {
             ${job.salary}
           </span>
           <button
-            className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition"
+            className="job-card-btn bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition"
             onClick={() => setOpen(true)}
           >
             Apply Now
