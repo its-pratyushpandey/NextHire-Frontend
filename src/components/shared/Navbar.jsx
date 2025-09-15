@@ -432,8 +432,46 @@ const MenuLink = ({ icon, children, href, onClick, className }) => {
 };
 
 const MobileMenu = () => (
-    <div className="md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
-        {/* Mobile menu content */}
+    <div className="md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-4 py-6 fixed top-16 left-0 w-full z-50 shadow-lg animate-slideDown">
+        <ul className="flex flex-col gap-4">
+            <li>
+                <Link to="/" className="flex items-center gap-2 text-lg font-semibold text-purple-700 dark:text-purple-400">
+                    <HomeIcon className="h-5 w-5" /> Home
+                </Link>
+            </li>
+            <li>
+                <Link to="/browse" className="flex items-center gap-2 text-lg font-semibold text-purple-700 dark:text-purple-400">
+                    <GlobeIcon className="h-5 w-5" /> Browse
+                </Link>
+            </li>
+            <li>
+                <Link to="/saved-jobs" className="flex items-center gap-2 text-lg font-semibold text-purple-700 dark:text-purple-400">
+                    <BookmarkIcon className="h-5 w-5" /> Saved
+                </Link>
+            </li>
+        </ul>
+        <div className="flex flex-col gap-2 mt-6">
+            <Link to="/login">
+                <Button variant="outline" className="w-full rounded-full border-purple-200 dark:border-purple-800 hover:bg-purple-50 dark:hover:bg-purple-900/20 text-lg">
+                    Login
+                </Button>
+            </Link>
+            <Link to="/signup">
+                <Button className="w-full rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-lg">
+                    Sign Up
+                </Button>
+            </Link>
+        </div>
+        <div className="mt-6 flex items-center justify-center">
+            <ThemeToggle />
+        </div>
+        <style>{`
+            @keyframes slideDown {
+                from { opacity: 0; transform: translateY(-20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .animate-slideDown { animation: slideDown 0.3s ease; }
+        `}</style>
     </div>
 );
 
