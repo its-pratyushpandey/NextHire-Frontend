@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
 
+
 const ChatSearch = ({ 
   isOpen, 
   onClose, 
