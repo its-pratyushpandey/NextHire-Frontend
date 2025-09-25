@@ -9,6 +9,7 @@ const initialState = {
     searchedQuery: "",
 };
 
+
 const jobSlice = createSlice({
     name: "job",
     initialState,
