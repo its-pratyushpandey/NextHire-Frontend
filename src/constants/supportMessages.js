@@ -9,6 +9,7 @@ export const SUPPORT_RESPONSES = [
       "Let me look into that for you."
     ]
   },
+  
   {
     type: 'job_search',
     messages: [
