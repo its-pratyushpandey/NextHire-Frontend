@@ -12,6 +12,7 @@ import VideoCall from '@/components/chat/VideoCall';
 
 const SOCKET_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
+
 const NextChat = () => {
   const { user } = useSelector(store => store.auth);
   const recruiterId = user?._id;
