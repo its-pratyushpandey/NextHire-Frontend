@@ -1,5 +1,7 @@
 import NextChat from './NextChat';
 
+
+
 export default function NextChatPage() {
   // You may want to get recruiterId and userId from auth context or redux
   // For demo, use dummy values or fetch from store
